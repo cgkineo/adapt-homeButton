@@ -35,7 +35,7 @@ define([
         _disabled: function() {
             this._$html.removeClass("hide-home-button");
             if (this._dataEvent) {
-                $(".navigation-home-button").attr("data-event", this._dataEvent)
+                $(".navigation-home-button").attr("data-event", this._dataEvent);
                 this._dataEvent = null;
             }
         },
