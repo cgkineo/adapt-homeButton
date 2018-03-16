@@ -1,6 +1,6 @@
 // config.json
 "_homeButton": {
-    "_isEnabled": false
+    "_isEnabled": true
 }
 
 // course.json
