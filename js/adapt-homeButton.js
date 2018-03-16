@@ -41,7 +41,7 @@ define([
         },
 
         _enabled: function() {
-            this._$html.toggleClass("hide-home-button", !!this._config._hideBackButton);
+            this._$html.toggleClass("hide-home-button", !!this._config._hideHomeButton);
             if (this._config._redirectToId) {
                 this._dataEvent = $(".navigation-home-button").attr("data-event");
                 $(".navigation-home-button").attr("data-event", "redirectedHomeButton");
