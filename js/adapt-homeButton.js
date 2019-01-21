@@ -42,10 +42,22 @@ define([
 
         _enabled: function() {
             this._$html.toggleClass("hide-home-button", !!this._config._hideHomeButton);
+            if (!$(".navigation-home-button")[0]) {
+                // if home button doesn't exist create home button
+                this._createHomeButton();
+            }
             if (this._config._redirectToId) {
                 this._dataEvent = $(".navigation-home-button").attr("data-event");
                 $(".navigation-home-button").attr("data-event", "redirectedHomeButton");
             }
+        },
+
+        _createHomeButton: function() {
+            var $homeButton = $('<button></button>')
+                .attr('data-event', 'homeButton')
+                .addClass('base navigation-home-button icon icon-home');
+
+                $('.navigation-inner').append($homeButton);
         },
 
         _redirected: function() {
