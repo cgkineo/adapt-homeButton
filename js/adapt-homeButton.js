@@ -53,11 +53,10 @@ define([
         },
 
         _createHomeButton: function() {
-            var $homeButton = $('<button></button>')
-                .attr('data-event', 'homeButton')
-                .addClass('base navigation-home-button icon icon-home');
-
-                $('.navigation-inner').append($homeButton);
+            $('.navigation-inner').append($('<button>', {
+                attr: { 'data-event': 'homeButton' },
+                'class': 'base navigation-home-button icon icon-home'
+            }));
         },
 
         _redirected: function() {
