@@ -14,5 +14,6 @@
 "_homeButton": {
     "_isEnabled": false,
     "_hideHomeButton": false,
+    "_hideBackButton": false,
     "_redirectToId": ""
 }

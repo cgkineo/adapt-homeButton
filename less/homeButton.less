@@ -1,5 +1,8 @@
-html.hide-home-button .navigation-home-button {
-    display: none;
+html {
+	&.hide-home-button .navigation-home-button,
+	&.hide-back-button .navigation-back-button {
+	    display: none;
+	}
 }
 
 // replicate navigation back button float
