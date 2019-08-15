@@ -42,6 +42,8 @@ define([
 
         _enabled: function() {
             this._$html.toggleClass("hide-home-button", !!this._config._hideHomeButton);
+            // extend functionality to toggle back button display
+            this._$html.toggleClass("hide-back-button", !!this._config._hideBackButton);
             if (!$(".navigation-home-button")[0]) {
                 // if home button doesn't exist create home button
                 this._createHomeButton();
