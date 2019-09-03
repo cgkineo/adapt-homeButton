@@ -67,11 +67,11 @@ define([
             if (!model) return;
             switch (model.get("_type")) {
                 case "course":
-                    Backbone.history.navigate("#/", { trigger: true, relpace: false });
+                    Backbone.history.navigate("#/", { trigger: true, replace: false });
                     break;
                 case "menu":
                 case "page":
-                    Backbone.history.navigate("#/id/"+model.get("_id"), { trigger: true, relpace: false });
+                    Backbone.history.navigate("#/id/"+model.get("_id"), { trigger: true, replace: false });
                     break;
             }
         }
