@@ -55,10 +55,17 @@ define([
         },
 
         _createHomeButton: function() {
-            $('.nav__inner').append($('<button>', {
-                attr: { 'data-event': 'homeButton' },
+            var $backButton = $('button[data-event="backButton"]');
+            var $icon = $('<div>', {'class': 'icon'});
+            var $homeButton = $('<button>', {
+                attr: {
+                    'data-event': 'homeButton'
+                },
                 'class': 'btn-icon nav__btn nav__home-btn js-nav-home-btn'
-            }));
+            }).append($icon);
+
+            // insert immediately after back button (so that tab order is correct)
+            $homeButton.insertAfter($backButton);
         },
 
         _redirected: function() {
