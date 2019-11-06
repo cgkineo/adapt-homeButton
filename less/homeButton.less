@@ -1,14 +1,19 @@
 html {
-	&.hide-home-button .navigation-home-button,
-	&.hide-back-button .navigation-back-button {
-	    display: none;
-	}
+    &.hide-nav-home-btn .nav__home-btn,
+    &.hide-nav-back-btn .nav__back-btn {
+        .u-display-none;
+    }
 }
 
-// replicate navigation back button float
-.navigation-home-button {
-    float:left;
+// replicate navigation back button float
+.nav__home-btn {
+    .u-float-left;
+
     .dir-rtl & {
-        float:right;
+        .u-float-right;
     }
+}
+
+.nav__home-btn .icon {
+    .icon-home;
 }

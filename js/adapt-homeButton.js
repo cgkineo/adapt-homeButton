@@ -33,31 +33,31 @@ define([
         },
 
         _disabled: function() {
-            this._$html.removeClass("hide-home-button");
+            this._$html.removeClass("hide-nav-home-btn");
             if (this._dataEvent) {
-                $(".navigation-home-button").attr("data-event", this._dataEvent);
+                $(".js-nav-home-btn").attr("data-event", this._dataEvent);
                 this._dataEvent = null;
             }
         },
 
         _enabled: function() {
-            this._$html.toggleClass("hide-home-button", !!this._config._hideHomeButton);
+            this._$html.toggleClass("hide-nav-home-btn", !!this._config._hideHomeButton);
             // extend functionality to toggle back button display
-            this._$html.toggleClass("hide-back-button", !!this._config._hideBackButton);
-            if (!$(".navigation-home-button")[0]) {
+            this._$html.toggleClass("hide-nav-back-btn", !!this._config._hideBackButton);
+            if (!$(".js-nav-home-btn")[0]) {
                 // if home button doesn't exist create home button
                 this._createHomeButton();
             }
             if (this._config._redirectToId) {
-                this._dataEvent = $(".navigation-home-button").attr("data-event");
-                $(".navigation-home-button").attr("data-event", "redirectedHomeButton");
+                this._dataEvent = $(".js-nav-home-btn").attr("data-event");
+                $(".js-nav-home-btn").attr("data-event", "redirectedHomeButton");
             }
         },
 
         _createHomeButton: function() {
-            $('.navigation-inner').append($('<button>', {
+            $('.nav__inner').append($('<button>', {
                 attr: { 'data-event': 'homeButton' },
-                'class': 'base navigation-home-button icon icon-home'
+                'class': 'btn-icon nav__btn nav__home-btn js-nav-home-btn'
             }));
         },
 
@@ -71,7 +71,7 @@ define([
                     break;
                 case "menu":
                 case "page":
-                    Backbone.history.navigate("#/id/"+model.get("_id"), { trigger: true, replace: false });
+                    Backbone.history.navigate("#/id/" + model.get("_id"), { trigger: true, replace: false });
                     break;
             }
         }
