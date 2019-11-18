@@ -59,6 +59,15 @@
                   "title": "Redirect the home button to id",
                   "inputType": "Text",
                   "validators": []
+                },
+                "alt": {
+                  "type": "string",
+                  "required": false,
+                  "default": "Home",
+                  "title": "Home button alt text",
+                  "inputType": "Text",
+                  "validators": [],
+                  "translatable": true
                 }
               }
             }

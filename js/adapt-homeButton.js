@@ -55,10 +55,20 @@ define([
         },
 
         _createHomeButton: function() {
-            $('.navigation-inner').append($('<button>', {
-                attr: { 'data-event': 'homeButton' },
-                'class': 'base navigation-home-button icon icon-home'
-            }));
+            var config = Adapt.course.get("_homeButton");
+            var altText = (config && config.alt);
+            var $backButton = $('button[data-event="backButton"]');
+            var $homeButton = $('<button>', {
+                attr: {
+                    'data-event': 'homeButton'
+                },
+                'class': 'base navigation-home-button icon icon-home',
+                'aria-label': altText
+            });
+
+            // insert immediately after back button (so that tab order is correct)
+            // back button is part of core (navigation.hbs)
+            $homeButton.insertAfter($backButton);
         },
 
         _redirected: function() {
