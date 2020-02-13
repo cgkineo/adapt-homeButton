@@ -64,7 +64,8 @@ define([
                     'data-event': 'homeButton'
                 },
                 'class': 'btn-icon nav__btn nav__home-btn js-nav-home-btn',
-                'aria-label': altText
+                'aria-label': altText,
+                'role' : 'link'
             }).append($icon);
 
             // insert immediately after back button (so that tab order is correct)
