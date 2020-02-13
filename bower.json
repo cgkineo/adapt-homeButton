@@ -1,7 +1,9 @@
 {
     "name": "adapt-homeButton",
-    "version": "1.0.0",
-    "framework": ">=5",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/cgkineo/adapt-homeButton.git"
+    },
     "homepage": "https://github.com/cgkineo/adapt-homeButton",
     "extension": "homeButton",
     "displayName": "Home Button",
