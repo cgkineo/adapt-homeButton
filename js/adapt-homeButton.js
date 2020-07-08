@@ -58,12 +58,12 @@ define([
             var config = Adapt.course.get("_homeButton");
             var altText = (config && config.alt);
             var $backButton = $('button[data-event="backButton"]');
-            var $icon = $('<div>', {'class': 'icon'});
+            var $icon = $('<div>', { 'class': 'icon' });
             var $homeButton = $('<button>', {
                 attr: {
                     'data-event': 'homeButton'
                 },
-                'class': 'btn-icon nav__btn nav__home-btn js-nav-home-btn',
+                'class': 'btn-icon nav__btn nav__homebutton-btn js-nav-home-btn',
                 'aria-label': altText,
                 role: 'link'
             }).append($icon);
