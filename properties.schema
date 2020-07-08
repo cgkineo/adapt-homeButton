@@ -20,7 +20,7 @@
                   "type": "boolean",
                   "required": false,
                   "default": true,
-                  "title": "Enable control of the home button",
+                  "title": "Enable control of the home button plugin",
                   "inputType": "Checkbox",
                   "validators": []
                 }
@@ -40,7 +40,7 @@
                   "type": "boolean",
                   "required": false,
                   "default": false,
-                  "title": "Enable control of the home button",
+                  "title": "Enable control of the home button at menu level",
                   "inputType": "Checkbox",
                   "validators": []
                 },
@@ -64,7 +64,7 @@
                   "type": "string",
                   "required": false,
                   "default": "Home",
-                  "title": "Home button alt text",
+                  "title": "Home button alt text - applied globally",
                   "inputType": "Text",
                   "validators": [],
                   "translatable": true
@@ -85,7 +85,7 @@
                   "type": "boolean",
                   "required": false,
                   "default": false,
-                  "title": "Enable control of the home button",
+                  "title": "Enable control of the home button at page level",
                   "inputType": "Checkbox",
                   "validators": []
                 },
