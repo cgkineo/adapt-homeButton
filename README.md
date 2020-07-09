@@ -4,6 +4,7 @@ Add home button to course navigation. Allows hide or redirect of home button. Al
 
 ## Settings
 
+All configuration options must be added and amended, where appropriate, for all json files.
 
 #### Config
 
