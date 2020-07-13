@@ -7,7 +7,7 @@
 
     // course.json
     "_homeButton": {
-        "_isEnabled": false,
+        "_isEnabled": true,
         "_hideHomeButton": false,
         "_comment": "Amend co-00 to match the ID of the start / landing page",
         "_redirectToId": "co-00",
@@ -18,6 +18,6 @@
     "_homeButton": {
         "_isEnabled": true,
         "_hideHomeButton": false,
-        "_hideBackButton": false,
+        "_hideBackButton": true,
         "_redirectToId": ""
     }
