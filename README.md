@@ -35,3 +35,11 @@ All configuration options must be added and amended, where appropriate, for all 
 >**\_hideBackButton** (boolean): Controls whether the navigational back button is hidden or not.
 
 >**\_redirectToId** (string): Define the page ID that the home button should direct the user to in case an override to the standard behaviour is required.
+
+----------------------------
+**Version number:**  0.1.0  
+**Framework versions:**  5+  
+**Author / maintainer:**  CGKineo  
+**Accessibility support:** WAI AA  
+**RTL support:** Yes  
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 12+13 for macOS/iOS/iPadOS, Opera  
