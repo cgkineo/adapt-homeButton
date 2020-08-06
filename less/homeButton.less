@@ -1,14 +1,20 @@
-html {
-	&.hide-home-button .navigation-home-button,
-	&.hide-back-button .navigation-back-button {
-	    display: none;
-	}
-}
+.nav {
+  // replicate navigation back button float
+  &__homebutton-btn {
+    .u-float-left;
+  }
 
-// replicate navigation back button float
-.navigation-home-button {
-    float:left;
-    .dir-rtl & {
-        float:right;
-    }
+  // hide home button class
+  .hide-nav-home-btn &__homebutton-btn {
+    .u-display-none;
+  }
+
+  // Change the home button icon to use the back arrow on the menu
+  .location-menu &__homebutton-btn .icon {
+    .icon-controls-small-left;
+  }
+
+  .location-page &__homebutton-btn .icon {
+    .icon-home;
+  }
 }
