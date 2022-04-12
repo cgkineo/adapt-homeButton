@@ -1,8 +1,8 @@
-    // Configuration options must be added and amended for all json files
+    // Configuration options must be added and amended for all json files where required
 
-    // config.json
+    // config.json - to disable globally
     "_homeButton": {
-        "_isEnabled": true
+        "_isEnabled": false
     }
 
     // course.json
@@ -11,7 +11,7 @@
         "_hideHomeButton": false,
         "_comment": "Amend co-00 to match the ID of the start / landing page",
         "_redirectToId": "co-00",
-        "alt": "Home"
+        "alt": "Introduction"
     }
 
     // contentObjects.json
@@ -19,5 +19,6 @@
         "_isEnabled": true,
         "_hideHomeButton": false,
         "_hideBackButton": true,
-        "_redirectToId": ""
+        "_redirectToId": "",
+        "alt": "Home"
     }

@@ -1,102 +1,77 @@
-define([
-  'core/js/adapt'
-], function(Adapt) {
+import Backbone from 'backbone';
+import Adapt from 'core/js/adapt';
+import data from 'core/js/data';
+import location from 'core/js/location';
+import router from 'core/js/router';
 
-  var HomeButton = Backbone.Controller.extend({
+class HomeButton extends Backbone.Controller {
 
-    _$html: null,
+  initialize() {
+    this.listenTo(Adapt, 'app:dataReady', this.onDataReady);
+  }
 
-    initialize: function() {
-      this.listenTo(Adapt, 'app:dataReady', this._onDataReady);
-    },
+  onDataReady() {
+    const config = Adapt.config.get('_homeButton');
+    if (config?._isEnabled === false) return;
+    this.$html = $('html');
+    this.listenTo(Adapt, {
+      remove: this.disable,
+      'router:menu router:page': this.onRouterEvent,
+      'navigation:redirectedHomeButton': this.redirected
+    });
+  }
 
-    _onDataReady: function() {
-      var config = Adapt.config.get('_homeButton');
-      if (!config || !config._isEnabled) return;
+  get config() {
+    return location._currentModel?.get('_homeButton');
+  }
 
-      this._$html = $('html');
+  onRouterEvent() {
+    const isEnabled = (this.config?._isEnabled);
+    if (!isEnabled) return this.disable();
+    this.enable();
+  }
 
-      this.listenTo(Adapt, {
-        'remove': this._onRemove,
-        'router:menu router:page': this._onRouterEvent,
-        'navigation:redirectedHomeButton': this._redirected
-      });
-    },
+  disable() {
+    this.$html.removeClass('hide-nav-home-btn');
+    $('.js-nav-home-btn').remove();
+  }
 
-    _onRouterEvent: function(model) {
-      this._config = model.get('_homeButton');
+  enable() {
+    const config = this.config;
+    this.$html.toggleClass('hide-nav-home-btn', Boolean(config?._hideHomeButton));
+    // extend functionality to toggle back button display
+    this.$html.toggleClass('hide-nav-back-btn', Boolean(config?._hideBackButton));
+    const altText = (config?.alt || '');
+    const $backButton = $('button[data-event="backButton"]');
+    const $icon = $('<div>', { class: 'icon' });
+    const $homeButton = $('<button>', {
+      attr: {
+        'data-event': config?._redirectToId ? 'redirectedHomeButton' : 'homeButton'
+      },
+      class: 'btn-icon nav__btn nav__homebutton-btn js-nav-home-btn',
+      'aria-label': altText,
+      role: 'link'
+    }).append($icon);
+    // insert immediately after back button (so that tab order is correct)
+    $homeButton.insertAfter($backButton);
+  }
 
-      var isEnabled = (this._config && this._config._isEnabled);
-      if (!isEnabled) return this._disabled();
-      this._enabled();
-    },
-
-    _onRemove: function() {
-      this._disabled();
-    },
-
-    _disabled: function() {
-      this._$html.removeClass('hide-nav-home-btn');
-
-      if (this._dataEvent) {
-        $('.js-nav-home-btn').attr('data-event', this._dataEvent);
-        this._dataEvent = null;
-      }
-    },
-
-    _enabled: function() {
-      this._$html.toggleClass('hide-nav-home-btn', !!this._config._hideHomeButton);
-      // extend functionality to toggle back button display
-      this._$html.toggleClass('hide-nav-back-btn', !!this._config._hideBackButton);
-
-      if (!$('.js-nav-home-btn')[0]) {
-        // if home button doesn't exist create home button
-        this._createHomeButton();
-      }
-
-      if (this._config._redirectToId) {
-        this._dataEvent = $('.js-nav-home-btn').attr('data-event');
-        $('.js-nav-home-btn').attr('data-event', 'redirectedHomeButton');
-      }
-    },
-
-    _createHomeButton: function() {
-      var config = Adapt.course.get('_homeButton');
-      var altText = (config && config.alt);
-      var $backButton = $('button[data-event="backButton"]');
-      var $icon = $('<div>', { 'class': 'icon' });
-      var $homeButton = $('<button>', {
-        attr: {
-          'data-event': 'homeButton'
-        },
-        'class': 'btn-icon nav__btn nav__homebutton-btn js-nav-home-btn',
-        'aria-label': altText,
-        role: 'link'
-      }).append($icon);
-
-      // insert immediately after back button (so that tab order is correct)
-      $homeButton.insertAfter($backButton);
-    },
-
-    _redirected: function() {
-      if (!this._config._redirectToId) return;
-
-      var model = Adapt.findById(this._config._redirectToId);
-      if (!model) return;
-
-      switch (model.get('_type')) {
-        case 'course':
-          Backbone.history.navigate('#/', { trigger: true, replace: false });
-          break;
-        case 'menu':
-        case 'page':
-          Backbone.history.navigate('#/id/' + model.get('_id'), { trigger: true, replace: false });
-          break;
-      }
+  redirected() {
+    const redirectToId = this.config?._redirectToId;
+    if (!redirectToId) return;
+    const model = data.findById(redirectToId);
+    if (!model) return;
+    switch (model.get('_type')) {
+      case 'course':
+        router.navigateToHomeRoute();
+        break;
+      case 'menu':
+      case 'page':
+        router.navigateToElement(model.get('_id'));
+        break;
     }
+  }
 
-  });
+}
 
-  return new HomeButton();
-
-});
+export default new HomeButton();
