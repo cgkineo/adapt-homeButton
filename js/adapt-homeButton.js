@@ -26,7 +26,7 @@ class HomeButton extends Backbone.Controller {
   }
   
   get courseConfig() {
-    return location._currentModel?.get('_homeButton');
+    return Adapt.course?.get('_homeButton');
   }
 
   onRouterEvent() {
