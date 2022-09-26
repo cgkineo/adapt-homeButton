@@ -46,7 +46,7 @@ class HomeButton extends Backbone.Controller {
     this.$html.toggleClass('hide-nav-home-btn', Boolean(currentModelConfig?._hideHomeButton));
     // extend functionality to toggle back button display
     this.$html.toggleClass('hide-nav-back-btn', Boolean(currentModelConfig?._hideBackButton));
-    const altText = (courseConfig?.alt ||  '');
+    const altText = (currentModelConfig?.alt || courseConfig?.alt || '');
     const $backButton = $('button[data-event="backButton"]');
     const $icon = $('<div>', { class: 'icon' });
     const $homeButton = $('<button>', {
