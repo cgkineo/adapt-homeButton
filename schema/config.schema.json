@@ -1,0 +1,26 @@
+{
+  "$anchor": "homeButton-config",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$patch": {
+    "source": {
+      "$ref": "config"
+    },
+    "with": {
+      "properties": {
+        "_homeButton": {
+          "type": "object",
+          "title": "Home Button",
+          "default": {},
+          "properties": {
+            "_isEnabled": {
+              "type": "boolean",
+              "title": "Enable control of the home button globally",
+              "default": false
+            }
+          }
+        }
+      }
+    }
+  }
+}
