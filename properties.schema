@@ -57,6 +57,7 @@
                   "required": false,
                   "default": "",
                   "title": "Redirect the home button to id",
+                  "help": "Enter the Friendly id of the page that the home button should direct the user to (ex. a splash page)",
                   "inputType": "Text",
                   "validators": []
                 },

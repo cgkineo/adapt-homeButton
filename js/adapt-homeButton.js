@@ -24,7 +24,7 @@ class HomeButton extends Backbone.Controller {
   get currentModelConfig() {
     return location._currentModel?.get('_homeButton');
   }
-  
+
   get courseConfig() {
     return Adapt.course?.get('_homeButton');
   }

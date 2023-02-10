@@ -1,0 +1,45 @@
+{
+  "$anchor": "homeButton-course",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$patch": {
+    "source": {
+      "$ref": "course"
+    },
+    "with": {
+      "properties": {
+        "_homeButton": {
+          "type": "object",
+          "title": "Home Button",
+          "default": {},
+          "properties": {
+            "_isEnabled": {
+              "type": "boolean",
+              "title": "Enable control of the home button at menu level",
+              "default": false
+            },
+            "_hideHomeButton": {
+              "type": "boolean",
+              "title": "Hide the home button on the menu",
+              "default": false
+            },
+            "_redirectToId": {
+              "type": "string",
+              "title": "Redirect the home button to id",
+              "description": "Enter the Friendly id of the page that the home button should direct the user to (ex. a splash page)",
+              "default": ""
+            },
+            "alt": {
+              "type": "string",
+              "title": "Home button alt text - applied globally",
+              "default": "Home",
+              "_adapt": {
+                "translatable": true
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

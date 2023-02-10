@@ -1,0 +1,42 @@
+{
+  "$anchor": "homeButton-contentobject",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "$patch": {
+    "source": {
+      "$ref": "contentobject"
+    },
+    "with": {
+      "properties": {
+        "_homeButton": {
+          "type": "object",
+          "title": "Home Button",
+          "default": {},
+          "properties": {
+            "_isEnabled": {
+              "type": "boolean",
+              "title": "Enable control of the home button on this page",
+              "default": false
+            },
+            "_hideHomeButton": {
+              "type": "boolean",
+              "title": "Hide the home button on this page",
+              "default": false
+            },
+            "_hideBackButton": {
+              "type": "boolean",
+              "title": "Hide the back button on this page",
+              "default": false
+            },
+            "_redirectToId": {
+              "type": "string",
+              "title": "Redirect the home button to id",
+              "description": "Enter the Friendly id of the page that the home button should direct the user to (ex. a splash page)",
+              "default": ""
+            }
+          }
+        }
+      }
+    }
+  }
+}
