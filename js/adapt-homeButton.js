@@ -14,6 +14,7 @@ class HomeButton extends Backbone.Controller {
     const config = Adapt.config.get('_homeButton');
     if (config?._isEnabled === false) return;
     this.$html = $('html');
+    this.stopListening();
     this.listenTo(Adapt, {
       remove: this.disable,
       'router:menu router:page': this.onRouterEvent,
