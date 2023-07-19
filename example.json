@@ -1,24 +1,37 @@
-    // Configuration options must be added and amended for all json files where required
+// Configuration options must be added and amended for all JSON files where required
 
-    // config.json - to disable globally
-    "_homeButton": {
-        "_isEnabled": false
-    }
+// config.json - to disable globally
+"_homeButton": {
+    "_isEnabled": false
+}
 
-    // course.json
+// course.json
+"_extensions": {
     "_homeButton": {
-        "_isEnabled": true,
-        "_hideHomeButton": false,
-        "_comment": "Amend co-00 to match the ID of the start / landing page",
-        "_redirectToId": "co-00",
-        "alt": "Introduction"
+        "_navOrder": 1,
+        "navLabel": "Home",
+        "_navTooltip": {
+            "_isEnabled": false,
+            "text": "Home"
+        }
     }
+}
 
-    // contentObjects.json
-    "_homeButton": {
-        "_isEnabled": true,
-        "_hideHomeButton": false,
-        "_hideBackButton": true,
-        "_redirectToId": "",
-        "alt": "Home"
-    }
+
+// course.json
+"_homeButton": {
+    "_isEnabled": true,
+    "_hideHomeButton": false,
+    "_comment": "Amend co-00 to match the ID of the start / landing page",
+    "_redirectToId": "co-00",
+    "alt": "Introduction"
+}
+
+// contentObjects.json
+"_homeButton": {
+    "_isEnabled": true,
+    "_hideHomeButton": false,
+    "_hideBackButton": true,
+    "_redirectToId": "",
+    "alt": "Home"
+}
