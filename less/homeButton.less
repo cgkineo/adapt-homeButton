@@ -1,20 +1,18 @@
-.nav {
-  // replicate navigation back button float
-  &__homebutton-btn {
-    .u-float-left;
-  }
+.nav__homebutton-btn {
+  // Replicate navigation back button float
+  .u-float-left;
 
-  // hide home button class
-  .hide-nav-home-btn &__homebutton-btn {
+  // Hide home button class
+  .hide-nav-home-btn & {
     .u-display-none;
   }
 
   // Change the home button icon to use the back arrow on the menu
-  .location-menu &__homebutton-btn .icon {
+  .location-menu & .icon {
     .icon-controls-small-left;
   }
 
-  .location-page &__homebutton-btn .icon {
+  .location-page & .icon {
     .icon-home;
   }
 }
