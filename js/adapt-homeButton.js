@@ -77,7 +77,7 @@ class HomeButton extends Backbone.Controller {
     if (currentModelConfig.navLabel) {
       navLabel = currentModelConfig.navLabel;
     }
-    if (currentModelConfig._navTooltip) {
+    if (currentModelConfig._navTooltip && currentModelConfig._navTooltip.text) {
       _navTooltip = currentModelConfig._navTooltip;
     }
     if (currentModelConfig.alt) {
