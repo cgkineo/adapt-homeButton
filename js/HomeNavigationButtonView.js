@@ -9,11 +9,9 @@ class HomeNavigationButtonView extends NavigationButtonView {
     this.setUpEventListeners();
     this.render();
 
-    const attributes = this.model.toJSON();
-
     tooltips.register({
       _id: 'HomeButton',
-      _navTooltip: attributes._navTooltip
+      ...this.model.get('_navTooltip') || {}
     });
   }
 
