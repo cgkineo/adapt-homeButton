@@ -30,7 +30,7 @@ class HomeNavigationButtonView extends NavigationButtonView {
       name: attributes._id,
       role: attributes._role === 'button' ? undefined : attributes._role,
       'data-order': attributes._order,
-      'aria-label': attributes.navigationAriaLabel,
+      'aria-label': attributes.alt,
       'data-event': attributes._dataEvent,
       'data-tooltip-id': 'HomeButton'
     };

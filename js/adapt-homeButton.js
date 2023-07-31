@@ -81,7 +81,7 @@ class HomeButton extends Backbone.Controller {
       _navTooltip = currentModelConfig._navTooltip;
     }
     if (currentModelConfig.alt) {
-      alt = currentModelConfig.navigationAriaLabel;
+      alt = currentModelConfig.alt;
     }
 
     const model = new NavigationButtonModel({
