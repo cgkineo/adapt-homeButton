@@ -1,14 +1,15 @@
 // Configuration options must be added and amended for all JSON files where required
 
-// config.json - to disable globally
+// config.json - Used to disable globally
 "_homeButton": {
     "_isEnabled": false
 }
 
-// course.json
+// course.json - Use for global settings and navigation order
 "_extensions": {
     "_homeButton": {
         "_navOrder": 1,
+        "_showLabel": true,
         "navLabel": "Home",
         "_navTooltip": {
             "_isEnabled": false,
@@ -17,20 +18,32 @@
     }
 }
 
-// course.json
+// course.json - Use to configure at the menu level
 "_homeButton": {
     "_isEnabled": true,
     "_hideHomeButton": false,
-    "_comment": "Amend co-00 to match the ID of the start / landing page",
+    "_comment": "Amend _redirectToId to match the ID of the start / landing page",
     "_redirectToId": "co-00",
-    "alt": "Introduction"
+    "alt": "Introduction",
+    "_comment": "Option to override navigation button label and tooltip",
+    "navLabel": "Introduction",
+    "_navTooltip": {
+        "_isEnabled": true,
+        "text": "Introduction"
+    }
 }
 
-// contentObjects.json
+// contentObjects.json - Use to configure at the content object level
 "_homeButton": {
     "_isEnabled": true,
     "_hideHomeButton": false,
     "_hideBackButton": true,
     "_redirectToId": "",
-    "alt": "Home"
+    "alt": "Home",
+    "_comment": "Option to override navigation button label and tooltip",
+    "navLabel": "Home",
+    "_navTooltip": {
+        "_isEnabled": true,
+        "text": "Home"
+    }
 }

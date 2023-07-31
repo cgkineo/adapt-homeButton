@@ -6,11 +6,14 @@ class HomeNavigationButtonView extends NavigationButtonView {
 
   initialize(options) {
     super.initialize(options);
+    this.setUpEventListeners();
     this.render();
+
+    const attributes = this.model.toJSON();
 
     tooltips.register({
       _id: 'HomeButton',
-      ...HomeNavigationButtonView.globalsConfig._navTooltip || {}
+      _navTooltip: attributes._navTooltip
     });
   }
 
@@ -29,21 +32,20 @@ class HomeNavigationButtonView extends NavigationButtonView {
       name: attributes._id,
       role: attributes._role === 'button' ? undefined : attributes._role,
       'data-order': attributes._order,
-      // 'aria-label': Adapt.course.get('_homeButton').navigationAriaLabel,
-      'aria-label': 'TBD',
+      'aria-label': attributes.navigationAriaLabel,
+      'data-event': attributes._dataEvent,
       'data-tooltip-id': 'HomeButton'
     };
   }
 
-  events() {
-    return {
-      click: 'onClick'
-    };
+  setUpEventListeners() {
+    this.listenTo(Adapt, {
+      remove: this.remove
+    });
   }
 
-  onClick(event) {
-    if (event && event.preventDefault) event.preventDefault();
-    // redirected()
+  remove() {
+    super.remove();
   }
 
 }

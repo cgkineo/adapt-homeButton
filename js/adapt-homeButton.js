@@ -14,6 +14,7 @@ class HomeButton extends Backbone.Controller {
   }
 
   onDataReady() {
+    // Do not render if turned off at config level
     const config = Adapt.config.get('_homeButton');
     if (config?._isEnabled === false) return;
 
@@ -24,6 +25,10 @@ class HomeButton extends Backbone.Controller {
       'router:menu router:page': this.onRouterEvent,
       'navigation:redirectedHomeButton': this.redirected
     });
+  }
+
+  static get globalsConfig() {
+    return Adapt.course.get('_globals')?._extensions?._homeButton;
   }
 
   get currentModelConfig() {
@@ -47,37 +52,37 @@ class HomeButton extends Backbone.Controller {
 
   enable() {
     const currentModelConfig = this.currentModelConfig;
-    // const courseConfig = HomeButton.courseConfig;
+
+    // Update <html> classes
     this.$html.toggleClass('hide-nav-home-btn', Boolean(currentModelConfig?._hideHomeButton));
     // extend functionality to toggle back button display
     this.$html.toggleClass('hide-nav-back-btn', Boolean(currentModelConfig?._hideBackButton));
 
-    this.setupNavigationButton();
-    // const altText = (currentModelConfig?.alt || courseConfig?.alt || '');
-    // const $backButton = $('button[data-event="backButton"]');
-    // const $icon = $('<div>', { class: 'icon', 'aria-hidden': true });
-    // const $homeButton = $('<button>', {
-    //   attr: {
-    //     'data-event': currentModelConfig?._redirectToId ? 'redirectedHomeButton' : 'homeButton'
-    //   },
-    //   class: 'btn-icon nav__btn nav__homebutton-btn js-nav-home-btn',
-    //   'aria-label': altText,
-    //   role: 'link'
-    // }).append($icon);
-    // // insert immediately after back button (so that tab order is correct)
-    // $homeButton.insertAfter($backButton);
+    this.renderNavigationView();
   }
 
-  setupNavigationButton() {
-    // const currentModelConfig = this.currentModelConfig;
-    const courseConfig = HomeButton.courseConfig;
-    if (!courseConfig?._isEnabled) return;
+  renderNavigationView() {
+    const currentModelConfig = this.currentModelConfig;
 
-    const {
+    // Default to global config
+    let {
       _navOrder = 0,
       _showLabel = true,
-      navLabel = ''
-    } = HomeButton.courseConfig ?? {};
+      alt = '',
+      navLabel = '',
+      _navTooltip = {}
+    } = HomeButton.globalsConfig ?? {};
+
+    // Check for overrides on current model
+    if (currentModelConfig.navLabel) {
+      navLabel = currentModelConfig.navLabel;
+    }
+    if (currentModelConfig._navTooltip) {
+      _navTooltip = currentModelConfig._navTooltip;
+    }
+    if (currentModelConfig.alt) {
+      alt = currentModelConfig.navigationAriaLabel;
+    }
 
     const model = new NavigationButtonModel({
       _id: 'HomeButton',
@@ -85,9 +90,11 @@ class HomeButton extends Backbone.Controller {
       _showLabel,
       _classes: 'btn-icon nav__btn nav__homebutton-btn',
       _iconClasses: '',
-      _role: 'button',
-      text: navLabel
-      // ,redirected: this.redirected.bind(this)
+      _role: 'link',
+      text: navLabel,
+      _navTooltip,
+      alt,
+      _dataEvent: currentModelConfig?._redirectToId ? 'redirectedHomeButton' : 'homeButton'
     });
 
     navigation.addButton(new HomeNavigationButtonView({ model }));
