@@ -63,40 +63,23 @@ class HomeButton extends Backbone.Controller {
 
   renderNavigationView() {
     const currentModelConfig = this.currentModelConfig;
-
-    // Default to global config
-    let {
-      _navOrder = 0,
+    const {
+      _navOrder = -1,
       _showLabel = true,
-      alt = '',
       navLabel = '',
       _navTooltip = {}
-    } = HomeButton.globalsConfig ?? {};
-
-    // Check for overrides on current model
-    if (currentModelConfig.navLabel) {
-      navLabel = currentModelConfig.navLabel;
-    }
-    if (currentModelConfig._navTooltip && currentModelConfig._navTooltip.text) {
-      _navTooltip = currentModelConfig._navTooltip;
-    }
-    if (currentModelConfig.alt) {
-      alt = currentModelConfig.alt;
-    }
-
+    } = Object.assign(HomeButton.globalsConfig ?? {}, currentModelConfig);
     const model = new NavigationButtonModel({
-      _id: 'HomeButton',
+      _id: 'homebutton',
       _order: _navOrder,
       _showLabel,
       _classes: 'btn-icon nav__btn nav__homebutton-btn',
-      _iconClasses: '',
       _role: 'link',
+      ariaLabel: navLabel,
       text: navLabel,
       _navTooltip,
-      alt,
-      _dataEvent: currentModelConfig?._redirectToId ? 'redirectedHomeButton' : 'homeButton'
+      _event: currentModelConfig?._redirectToId ? 'redirectedHomeButton' : 'homeButton'
     });
-
     navigation.addButton(new HomeNavigationButtonView({ model }));
   }
 

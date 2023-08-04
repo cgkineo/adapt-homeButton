@@ -4,46 +4,31 @@ import tooltips from 'core/js/tooltips';
 
 class HomeNavigationButtonView extends NavigationButtonView {
 
+  attributes() {
+    const attributes = super.attributes();
+    return Object.assign(attributes, {
+      'data-tooltip-id': this.model.get('_id')
+    });
+  }
+
   initialize(options) {
     super.initialize(options);
-    this.setUpEventListeners();
+    this.setupEventListeners();
     this.render();
-
     tooltips.register({
-      _id: 'HomeButton',
+      _id: this.model.get('_id'),
       ...this.model.get('_navTooltip') || {}
     });
   }
 
-  static get globalsConfig() {
-    return Adapt.course.get('_globals')?._extensions?._homeButton;
-  }
-
-  static get template() {
-    return 'HomeNavigationButton.jsx';
-  }
-
-  attributes() {
-    const attributes = this.model.toJSON();
-
-    return {
-      name: attributes._id,
-      role: attributes._role === 'button' ? undefined : attributes._role,
-      'data-order': attributes._order,
-      'aria-label': attributes.alt,
-      'data-event': attributes._dataEvent,
-      'data-tooltip-id': 'HomeButton'
-    };
-  }
-
-  setUpEventListeners() {
+  setupEventListeners() {
     this.listenTo(Adapt, {
       remove: this.remove
     });
   }
 
-  remove() {
-    super.remove();
+  static get template() {
+    return 'HomeNavigationButton.jsx';
   }
 
 }
