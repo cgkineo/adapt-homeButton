@@ -5,10 +5,10 @@ import tooltips from 'core/js/tooltips';
 class HomeNavigationButtonView extends NavigationButtonView {
 
   attributes() {
-    const attributes = super.attributes();
-    return Object.assign(attributes, {
+    return {
+      ...super.attributes(),
       'data-tooltip-id': this.model.get('_id')
-    });
+    };
   }
 
   initialize(options) {
