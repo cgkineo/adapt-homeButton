@@ -3,6 +3,9 @@ import Adapt from 'core/js/adapt';
 import data from 'core/js/data';
 import location from 'core/js/location';
 import router from 'core/js/router';
+import navigation from 'core/js/navigation';
+import NavigationButtonModel from 'core/js/models/NavigationButtonModel';
+import HomeNavigationButtonView from './HomeNavigationButtonView';
 
 class HomeButton extends Backbone.Controller {
 
@@ -11,8 +14,10 @@ class HomeButton extends Backbone.Controller {
   }
 
   onDataReady() {
+    // Do not render if turned off at config level
     const config = Adapt.config.get('_homeButton');
     if (config?._isEnabled === false) return;
+
     this.$html = $('html');
     this.stopListening();
     this.listenTo(Adapt, {
@@ -22,11 +27,15 @@ class HomeButton extends Backbone.Controller {
     });
   }
 
+  static get globalsConfig() {
+    return Adapt.course.get('_globals')?._extensions?._homeButton;
+  }
+
   get currentModelConfig() {
     return location._currentModel?.get('_homeButton');
   }
 
-  get courseConfig() {
+  static get courseConfig() {
     return Adapt.course?.get('_homeButton');
   }
 
@@ -43,30 +52,44 @@ class HomeButton extends Backbone.Controller {
 
   enable() {
     const currentModelConfig = this.currentModelConfig;
-    const courseConfig = this.courseConfig;
+
+    // Update <html> classes
     this.$html.toggleClass('hide-nav-home-btn', Boolean(currentModelConfig?._hideHomeButton));
     // extend functionality to toggle back button display
     this.$html.toggleClass('hide-nav-back-btn', Boolean(currentModelConfig?._hideBackButton));
-    const altText = (currentModelConfig?.alt || courseConfig?.alt || '');
-    const $backButton = $('button[data-event="backButton"]');
-    const $icon = $('<div>', { class: 'icon', 'aria-hidden': true });
-    const $homeButton = $('<button>', {
-      attr: {
-        'data-event': currentModelConfig?._redirectToId ? 'redirectedHomeButton' : 'homeButton'
-      },
-      class: 'btn-icon nav__btn nav__homebutton-btn js-nav-home-btn',
-      'aria-label': altText,
-      role: 'link'
-    }).append($icon);
-    // insert immediately after back button (so that tab order is correct)
-    $homeButton.insertAfter($backButton);
+
+    this.renderNavigationView();
+  }
+
+  renderNavigationView() {
+    const currentModelConfig = this.currentModelConfig;
+    const {
+      _navOrder = -1,
+      _showLabel = true,
+      navLabel = '',
+      _navTooltip = {}
+    } = Object.assign(HomeButton.globalsConfig ?? {}, currentModelConfig);
+    const model = new NavigationButtonModel({
+      _id: 'homebutton',
+      _order: _navOrder,
+      _showLabel,
+      _classes: 'btn-icon nav__btn nav__homebutton-btn',
+      _role: 'link',
+      ariaLabel: navLabel,
+      text: navLabel,
+      _navTooltip,
+      _event: currentModelConfig?._redirectToId ? 'redirectedHomeButton' : 'homeButton'
+    });
+    navigation.addButton(new HomeNavigationButtonView({ model }));
   }
 
   redirected() {
     const redirectToId = this.currentModelConfig?._redirectToId;
     if (!redirectToId) return;
+
     const model = data.findById(redirectToId);
     if (!model) return;
+
     switch (model.get('_type')) {
       case 'course':
         router.navigateToHomeRoute();

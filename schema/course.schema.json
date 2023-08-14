@@ -8,6 +8,63 @@
     },
     "with": {
       "properties": {
+        "_globals": {
+          "type": "object",
+          "default": {},
+          "properties": {
+            "_extensions": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "_homeButton": {
+                  "type": "object",
+                  "title": "Home Button",
+                  "default": {},
+                  "properties": {
+                    "_navOrder": {
+                      "type": "number",
+                      "title": "Navigation bar order",
+                      "description": "Determines the order in which the button is displayed in the navigation bar. Negative numbers (e.g. -100) are left-aligned. Positive numbers (e.g. 100) are right-aligned.",
+                      "default": -1
+                    },
+                    "_showLabel": {
+                      "type": "boolean",
+                      "title": "Enable navigation bar button label",
+                      "default": true
+                    },
+                    "navLabel": {
+                      "type": "string",
+                      "title": "Navigation bar button label",
+                      "default": "Home",
+                      "_adapt": {
+                        "translatable": true
+                      }
+                    },
+                    "_navTooltip": {
+                      "type": "object",
+                      "title": "Navigation tooltip",
+                      "properties": {
+                        "_isEnabled": {
+                          "type": "boolean",
+                          "title": "Enable tooltip for navigation button",
+                          "default": true
+                        },
+                        "text": {
+                          "type": "string",
+                          "title": "",
+                          "default": "Home",
+                          "_adapt": {
+                            "translatable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "_homeButton": {
           "type": "object",
           "title": "Home Button",
@@ -28,14 +85,6 @@
               "title": "Redirect the home button to id",
               "description": "Enter the Friendly id of the page that the home button should direct the user to (ex. a splash page)",
               "default": ""
-            },
-            "alt": {
-              "type": "string",
-              "title": "Home button alt text - applied globally",
-              "default": "Home",
-              "_adapt": {
-                "translatable": true
-              }
             }
           }
         }
