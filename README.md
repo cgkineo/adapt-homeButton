@@ -38,7 +38,7 @@ All configuration options must be added and amended, where appropriate, for all 
 
 ----------------------------
 
-**Framework versions:**  5+<br>
+**Framework versions:**  5.30.3+<br>
 **Author / maintainer:**  CGKineo<br>
 **Accessibility support:** WAI AA<br>
 **RTL support:** Yes<br>
