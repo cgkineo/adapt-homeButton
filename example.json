@@ -22,6 +22,7 @@
 "_homeButton": {
   "_isEnabled": true,
   "_hideHomeButton": false,
+  "_hideBackButton": true,
   "_comment": "Amend _redirectToId to match the ID of the start / landing page",
   "_redirectToId": "",
   "_comment": "Option to override navigation button label and tooltip",
