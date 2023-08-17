@@ -52,12 +52,12 @@
             },
             "_navTooltip": {
               "type": "object",
-              "title": "Home Button",
+              "title": "Navigation tooltip",
               "default": {},
               "properties": {
                 "_isEnabled": {
                   "type": "boolean",
-                  "title": "Enable control of the home button at menu level",
+                  "title": "Enable tooltip for navigation button",
                   "default": false
                 },
                 "text": {
