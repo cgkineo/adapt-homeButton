@@ -10,8 +10,7 @@
       "title": "Navigation bar order",
       "help": "Determines the order in which the button is displayed in the navigation bar. Negative numbers (e.g. -100) are left-aligned. Positive numbers (e.g. 100) are right-aligned.",
       "default": 0,
-      "inputType": "Text",
-      "validators": []
+      "inputType": "Text"
     },
     "_showLabel": {
       "type": "boolean",
@@ -19,7 +18,6 @@
       "default": true,
       "title": "Enable navigation bar button label",
       "inputType": "Checkbox",
-      "validators": [],
       "help": "Controls whether a label is shown on the navigation bar button."
     },
     "navLabel": {
@@ -28,7 +26,6 @@
       "default": "Home",
       "title": "Navigation bar button label",
       "inputType": "Text",
-      "validators": [],
       "translatable": true
     },
     "_navTooltip": {
@@ -67,8 +64,7 @@
                   "required": false,
                   "default": false,
                   "title": "Enable control of the home button plugin",
-                  "inputType": "Checkbox",
-                  "validators": []
+                  "inputType": "Checkbox"
                 }
               }
             }
@@ -98,6 +94,14 @@
                   "inputType": "Checkbox",
                   "validators": []
                 },
+                "_hideBackButton": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Hide the back button",
+                  "inputType": "Checkbox",
+                  "validators": []
+                },
                 "_redirectToId": {
                   "type": "string",
                   "required": false,
@@ -111,10 +115,35 @@
                   "type": "string",
                   "required": false,
                   "default": "Home",
-                  "title": "Home button alt text - applied globally",
+                  "title": "Home button alt text",
                   "inputType": "Text",
                   "validators": [],
                   "translatable": true
+                },
+                "navLabel": {
+                  "type": "string",
+                  "required": true,
+                  "default": "Home",
+                  "title": "Navigation bar button label",
+                  "inputType": "Text",
+                  "translatable": true
+                },
+                "_navTooltip": {
+                  "type": "object",
+                  "title": "Navigation tooltip",
+                  "properties": {
+                    "_isEnabled": {
+                      "type": "boolean",
+                      "title": "Enable tooltip for navigation button",
+                      "default": true
+                    },
+                    "text": {
+                      "type": "string",
+                      "title": "",
+                      "default": "Home",
+                      "translatable": true
+                    }
+                  }
                 }
               }
             }
@@ -132,7 +161,7 @@
                   "type": "boolean",
                   "required": false,
                   "default": false,
-                  "title": "Enable control of the home button at page level",
+                  "title": "Enable control of the home button at menu level",
                   "inputType": "Checkbox",
                   "validators": []
                 },
@@ -147,7 +176,7 @@
                 "_hideBackButton": {
                   "type": "boolean",
                   "required": false,
-                  "default": false,
+                  "default": true,
                   "title": "Hide the back button",
                   "inputType": "Checkbox",
                   "validators": []
@@ -157,21 +186,47 @@
                   "required": false,
                   "default": "",
                   "title": "Redirect the home button to id",
+                  "help": "Enter the Friendly id of the page that the home button should direct the user to (ex. a splash page)",
                   "inputType": "Text",
                   "validators": []
+                },
+                "alt": {
+                  "type": "string",
+                  "required": false,
+                  "default": "Home",
+                  "title": "Home button alt text",
+                  "inputType": "Text",
+                  "validators": [],
+                  "translatable": true
+                },
+                "navLabel": {
+                  "type": "string",
+                  "required": true,
+                  "default": "Home",
+                  "title": "Navigation bar button label",
+                  "inputType": "Text",
+                  "translatable": true
+                },
+                "_navTooltip": {
+                  "type": "object",
+                  "title": "Navigation tooltip",
+                  "properties": {
+                    "_isEnabled": {
+                      "type": "boolean",
+                      "title": "Enable tooltip for navigation button",
+                      "default": true
+                    },
+                    "text": {
+                      "type": "string",
+                      "title": "",
+                      "default": "Home",
+                      "translatable": true
+                    }
+                  }
                 }
               }
             }
           }
-        },
-        "article": {
-          "type": "object"
-        },
-        "block": {
-          "type": "object"
-        },
-        "component": {
-          "type": "object"
         }
       }
     }
