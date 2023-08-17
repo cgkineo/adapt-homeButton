@@ -161,7 +161,7 @@
                   "type": "boolean",
                   "required": false,
                   "default": false,
-                  "title": "Enable control of the home button at menu level",
+                  "title": "Enable control of the home button at page level",
                   "inputType": "Checkbox",
                   "validators": []
                 },
