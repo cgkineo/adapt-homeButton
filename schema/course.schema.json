@@ -43,6 +43,7 @@
                     "_navTooltip": {
                       "type": "object",
                       "title": "Navigation tooltip",
+                      "default": {},
                       "properties": {
                         "_isEnabled": {
                           "type": "boolean",
