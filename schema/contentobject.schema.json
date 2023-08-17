@@ -15,24 +15,60 @@
           "properties": {
             "_isEnabled": {
               "type": "boolean",
-              "title": "Enable control of the home button on this page",
+              "title": "Enable control of the home button at menu level",
               "default": false
             },
             "_hideHomeButton": {
               "type": "boolean",
-              "title": "Hide the home button on this page",
+              "title": "Hide the home button on the menu",
               "default": false
             },
             "_hideBackButton": {
               "type": "boolean",
-              "title": "Hide the back button on this page",
-              "default": false
+              "title": "Hide the back button on the menu",
+              "default": true
             },
             "_redirectToId": {
               "type": "string",
               "title": "Redirect the home button to id",
               "description": "Enter the Friendly id of the page that the home button should direct the user to (ex. a splash page)",
               "default": ""
+            },
+            "alt": {
+              "type": "string",
+              "title": "Home button alt text",
+              "default": "Home",
+              "_adapt": {
+                "translatable": true
+              }
+            },
+            "navLabel": {
+              "type": "string",
+              "title": "Navigation bar button label",
+              "default": "Home",
+              "_adapt": {
+                "translatable": true
+              }
+            },
+            "_navTooltip": {
+              "type": "object",
+              "title": "Home Button",
+              "default": {},
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "title": "Enable control of the home button at menu level",
+                  "default": false
+                },
+                "text": {
+                  "type": "string",
+                  "title": "",
+                  "default": "Home",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                }
+              }
             }
           }
         }

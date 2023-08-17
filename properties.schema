@@ -9,7 +9,7 @@
       "required": true,
       "title": "Navigation bar order",
       "help": "Determines the order in which the button is displayed in the navigation bar. Negative numbers (e.g. -100) are left-aligned. Positive numbers (e.g. 100) are right-aligned.",
-      "default": 0,
+      "default": -1,
       "inputType": "Text"
     },
     "_showLabel": {

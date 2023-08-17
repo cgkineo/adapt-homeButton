@@ -16,7 +16,7 @@
             "_isEnabled": {
               "type": "boolean",
               "title": "Enable control of the home button globally",
-              "default": false
+              "default": true
             }
           }
         }
