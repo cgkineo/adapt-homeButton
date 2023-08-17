@@ -62,7 +62,7 @@
                 "_isEnabled": {
                   "type": "boolean",
                   "required": false,
-                  "default": false,
+                  "default": true,
                   "title": "Enable control of the home button plugin",
                   "inputType": "Checkbox"
                 }
