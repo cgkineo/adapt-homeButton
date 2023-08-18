@@ -117,7 +117,7 @@
                 "_isEnabled": {
                   "type": "boolean",
                   "title": "Enable tooltip for navigation button",
-                  "default": false
+                  "default": true
                 },
                 "text": {
                   "type": "string",
