@@ -15,17 +15,17 @@
           "properties": {
             "_isEnabled": {
               "type": "boolean",
-              "title": "Enable control of the home button at menu level",
-              "default": false
+              "title": "Enable control of the home button on this page",
+              "default": true
             },
             "_hideHomeButton": {
               "type": "boolean",
-              "title": "Hide the home button on the menu",
+              "title": "Hide the home button",
               "default": false
             },
             "_hideBackButton": {
               "type": "boolean",
-              "title": "Hide the back button on the menu",
+              "title": "Hide the back button",
               "default": true
             },
             "_redirectToId": {
