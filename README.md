@@ -1,12 +1,17 @@
 # adapt-homeButton
 
-**Home Button** is an extension that adds more control to the standard home and back buttons. The home button can redirect to a specific location such as an introductory page. Both the home and back buttons can also be hidden on specific pages or on the menu.
+**Home Button** is an extension that adds more control to the standard home and back buttons.
 
-## Settings
+## Settings Overview
 
-All configuration options must be added and amended, where appropriate, for all JSON files.
+**Home Button** can be configured based on the specific location where it is used (ex. a menu or a page). Options include:
+- Hiding either the home and/or back button. One or both can appear in the navigation at the same time.
+- Changing the text of the buttons
+- Redirecting the button to a specific location (ex. an introductory page)
 
 ## Attributes
+
+All configuration options must be added and amended, where appropriate, for all JSON files.
 
 ### *config.json*
 The following attributes are set within *config.json*.
@@ -18,7 +23,7 @@ The Home Button object contains the following settings:
 Controls whether the Home Button extension is enabled
 
 ### *course.json*
-The following attributes are set within *course.json*. These are used to set the global settings and navigation order:
+The following attributes are set within *course.json*. These are used to set some default settings and the navigation order:
 
 ### **\_homeButton** (object):
 The Home Button object contains the following settings:
