@@ -89,7 +89,7 @@
             "_redirectToId": {
               "type": "string",
               "title": "Redirect the home button to id",
-              "description": "Enter the Friendly id of the page that the home button should direct the user to (ex. a splash page)",
+              "description": "Enter the Friendly id of the page that the home button should direct the user to (e.g. a splash page)",
               "default": ""
             },
             "alt": {

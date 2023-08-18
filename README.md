@@ -4,10 +4,10 @@
 
 ## Settings Overview
 
-**Home Button** can be configured based on the specific location where it is used (ex. a menu or a page). Options include:
+**Home Button** can be configured based on the specific location where it is used (e.g. a menu or a page). Options include:
 - Hiding either the home and/or back button. One or both can appear in the navigation at the same time.
 - Changing the text of the buttons
-- Redirecting the button to a specific location (ex. an introductory page)
+- Redirecting the button to a specific location (e.g. an introductory page)
 
 ## Attributes
 
