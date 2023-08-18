@@ -34,6 +34,9 @@ The order that the button appears in the navigation
 #### **_showLabel** (boolean):
 Controls whether the button should use a navigation label or just an icon
 
+#### **alt** (string):
+The button's `aria-label` text. Used to override global setting
+
 #### **navLabel** (string):
 The button label text as it appears in the navigation
 
@@ -63,6 +66,9 @@ Controls whether the back button is hidden or not
 
 #### **\_redirectToId** (string):
 The page ID that the home button should redirect the user to. Use when overriding standard behaviour such as redirecting to an introductory page from the menu.
+
+#### **alt** (string):
+The button's `aria-label` text. Used to override global setting
 
 #### **navLabel** (string):
 The button label text as it appears in the navigation. Used to override global setting

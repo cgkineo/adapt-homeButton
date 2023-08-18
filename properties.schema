@@ -116,6 +116,7 @@
                   "required": false,
                   "default": "Home",
                   "title": "Home button alt text",
+                  "help": "Used for aria-label value",
                   "inputType": "Text",
                   "validators": [],
                   "translatable": true
@@ -195,6 +196,7 @@
                   "required": false,
                   "default": "Home",
                   "title": "Home button alt text",
+                  "help": "Used for aria-label value",
                   "inputType": "Text",
                   "validators": [],
                   "translatable": true

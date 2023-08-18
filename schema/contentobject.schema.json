@@ -37,6 +37,7 @@
             "alt": {
               "type": "string",
               "title": "Home button alt text",
+              "description": "Used for aria-label value",
               "default": "Home",
               "_adapt": {
                 "translatable": true
