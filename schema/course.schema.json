@@ -81,11 +81,6 @@
               "title": "Hide the home button on the menu",
               "default": false
             },
-            "_hideBackButton": {
-              "type": "boolean",
-              "title": "Hide the back button on the menu",
-              "default": true
-            },
             "_redirectToId": {
               "type": "string",
               "title": "Redirect the home button to id",

@@ -94,14 +94,6 @@
                   "inputType": "Checkbox",
                   "validators": []
                 },
-                "_hideBackButton": {
-                  "type": "boolean",
-                  "required": false,
-                  "default": true,
-                  "title": "Hide the back button",
-                  "inputType": "Checkbox",
-                  "validators": []
-                },
                 "_redirectToId": {
                   "type": "string",
                   "required": false,

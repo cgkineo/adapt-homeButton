@@ -62,7 +62,7 @@ Controls whether the Home Button extension is enabled
 Controls whether the home button is hidden or not
 
 #### **\_hideBackButton** (boolean):
-Controls whether the back button is hidden or not
+Controls whether the back button is hidden or not. Applies to *contentObjects.json* only.
 
 #### **\_redirectToId** (string):
 The page ID that the home button should redirect the user to. Use when overriding standard behaviour such as redirecting to an introductory page from the menu.
