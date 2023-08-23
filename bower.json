@@ -1,6 +1,6 @@
 {
   "name": "adapt-homeButton",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "framework": ">=5.19.1",
   "repository": {
     "type": "git",
