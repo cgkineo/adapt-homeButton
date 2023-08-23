@@ -43,6 +43,7 @@
                     "_navTooltip": {
                       "type": "object",
                       "title": "Navigation tooltip",
+                      "default": {},
                       "properties": {
                         "_isEnabled": {
                           "type": "boolean",
@@ -83,8 +84,45 @@
             "_redirectToId": {
               "type": "string",
               "title": "Redirect the home button to id",
-              "description": "Enter the Friendly id of the page that the home button should direct the user to (ex. a splash page)",
+              "description": "Enter the Friendly id of the page that the home button should direct the user to (e.g. a splash page)",
               "default": ""
+            },
+            "alt": {
+              "type": "string",
+              "title": "Home button alt text",
+              "description": "Used for aria-label value",
+              "default": "Home",
+              "_adapt": {
+                "translatable": true
+              }
+            },
+            "navLabel": {
+              "type": "string",
+              "title": "Navigation bar button label",
+              "default": "Home",
+              "_adapt": {
+                "translatable": true
+              }
+            },
+            "_navTooltip": {
+              "type": "object",
+              "title": "Navigation tooltip",
+              "default": {},
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "title": "Enable tooltip for navigation button",
+                  "default": true
+                },
+                "text": {
+                  "type": "string",
+                  "title": "",
+                  "default": "Home",
+                  "_adapt": {
+                    "translatable": true
+                  }
+                }
+              }
             }
           }
         }
