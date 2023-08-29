@@ -34,15 +34,18 @@
       "properties": {
         "_isEnabled": {
           "type": "boolean",
-          "inputType": "Checkbox",
+          "default": true,
           "title": "Enable tooltip for navigation button",
-          "default": true
+          "inputType": "Checkbox",
+          "validators": []
         },
         "text": {
           "type": "string",
-          "inputType": "Text",
           "title": "",
           "default": "Home",
+          "help": "The tooltip text to display on hover over this item",
+          "inputType": "Text",
+          "validators": [],
           "translatable": true
         }
       }
@@ -136,6 +139,7 @@
                     "text": {
                       "type": "string",
                       "inputType": "Text",
+                      "help": "The tooltip text to display on hover over this item",
                       "title": "",
                       "default": "Home",
                       "translatable": true
