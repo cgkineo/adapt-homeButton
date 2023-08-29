@@ -34,11 +34,13 @@
       "properties": {
         "_isEnabled": {
           "type": "boolean",
+          "inputType": "Checkbox",
           "title": "Enable tooltip for navigation button",
           "default": true
         },
         "text": {
           "type": "string",
+          "inputType": "Text",
           "title": "",
           "default": "Home",
           "translatable": true
@@ -127,11 +129,13 @@
                   "properties": {
                     "_isEnabled": {
                       "type": "boolean",
+                      "inputType": "Checkbox",
                       "title": "Enable tooltip for navigation button",
                       "default": true
                     },
                     "text": {
                       "type": "string",
+                      "inputType": "Text",
                       "title": "",
                       "default": "Home",
                       "translatable": true
@@ -207,11 +211,13 @@
                   "properties": {
                     "_isEnabled": {
                       "type": "boolean",
+                      "inputType": "Checkbox",
                       "title": "Enable tooltip for navigation button",
                       "default": true
                     },
                     "text": {
                       "type": "string",
+                      "inputType": "Text",
                       "title": "",
                       "default": "Home",
                       "translatable": true
