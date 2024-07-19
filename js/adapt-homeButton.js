@@ -65,6 +65,7 @@ class HomeButton extends Backbone.Controller {
     const currentModelConfig = this.currentModelConfig;
     const {
       _navOrder = -1,
+      _iconClasses,
       alt,
       _showLabel = true,
       navLabel = '',
@@ -75,6 +76,8 @@ class HomeButton extends Backbone.Controller {
       _order: _navOrder,
       _showLabel,
       _classes: 'btn-icon nav__btn nav__homebutton-btn',
+      courseConfig: HomeButton.courseConfig,
+      _iconClasses,
       _role: 'link',
       ariaLabel: alt || navLabel,
       text: navLabel,

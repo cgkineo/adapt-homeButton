@@ -87,6 +87,12 @@
               "description": "Enter the Friendly id of the page that the home button should direct the user to (e.g. a splash page)",
               "default": ""
             },
+            "_iconClasses": {
+              "type": "string",
+              "title": "Icon class",
+              "description": "CSS class name to override the default home button icon application. If an override is applied at this level the override will apply to the menu and all pages.",
+              "default": ""
+            },
             "alt": {
               "type": "string",
               "title": "Home button alt text",

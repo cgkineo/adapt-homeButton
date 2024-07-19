@@ -10,6 +10,7 @@
   "_homeButton": {
     "_navOrder": -1,
     "_showLabel": true,
+    "alt": "",
     "navLabel": "Home",
     "_navTooltip": {
       "_isEnabled": false,
@@ -24,6 +25,8 @@
   "_hideHomeButton": false,
   "_comment": "Amend _redirectToId to match the ID of the start / landing page",
   "_redirectToId": "",
+  "_iconClasses": "",
+  "alt": "",
   "_comment": "Option to override navigation button label and tooltip",
   "navLabel": "Introduction",
   "_navTooltip": {
@@ -39,6 +42,8 @@
   "_hideBackButton": true,
   "_comment": "Amend _redirectToId to match the ID of the start / landing page",
   "_redirectToId": "",
+  "_iconClasses": "",
+  "alt": "",
   "_comment": "Option to override navigation button label and tooltip",
   "navLabel": "Introduction",
   "_navTooltip": {
