@@ -9,78 +9,63 @@
 - Changing the text of the buttons
 - Redirecting the button to a specific location (e.g. an introductory page)
 
-## Attributes
+### Attributes
 
 All configuration options must be added and amended, where appropriate, for all JSON files.
 
-### *config.json*
+*config.json*
+
 The following attributes are set within *config.json*.
 
-### **\_homeButton** (object):
-The Home Button object contains the following settings:
+**\_homeButton** (object): The Home Button object contains the following settings:
 
-#### **\_isEnabled** (boolean):
-Controls whether the Home Button extension is enabled
+>**\_isEnabled** (boolean): Controls whether the Home Button extension is enabled.
 
-### *course.json*
+*course.json*
+
 The following attributes are set within *course.json*. These are used to set some default settings and the navigation order:
 
-### **\_homeButton** (object):
-The Home Button object contains the following settings:
+**\_homeButton** (object): The Home Button object contains the following settings:
 
-#### **_navOrder** (number):
-The order that the button appears in the navigation
+>**\_navOrder** (number): The order that the button appears in the navigation.
 
-#### **_showLabel** (boolean):
-Controls whether the button should use a navigation label or just an icon
+>**\_showLabel** (boolean): Controls whether the button should use a navigation label or just an icon.
 
-#### **alt** (string):
-The button's `aria-label` text. Used to override global setting
+>**alt** (string): The button's `aria-label` text. Used to override global setting.
 
-#### **navLabel** (string):
-The button label text as it appears in the navigation
+>**navLabel** (string): The button label text as it appears in the navigation.
 
-#### **_navTooltip** (object):
-The Navigation Tooltip object contains the following settings:
+>**\_navTooltip** (object): The Navigation Tooltip object contains the following settings:
 
-##### **\_isEnabled** (boolean):
-Controls whether the navigation tooltip is enabled
+>>**\_isEnabled** (boolean): Controls whether the navigation tooltip is enabled.
 
-##### **text** (string):
-The text of the tooltip. Used to override global setting
+>>**text** (string): The text of the tooltip. Used to override global setting.
 
-### *course.json / contentObjects.json*
-The following attributes are set within *course.json* and/or *contentObjects.json*. These are used to *override* global settings and customize the button for a specific page or menu.
+*course.json* and *contentObjects.json*
 
-### **\_homeButton** (object):
-The Home Button object contains the following settings:
+The following attributes are set within *course.json* and / or *contentObjects.json*. These are used to *override* global settings and customize the button for a specific page or menu.
 
-#### **\_isEnabled** (boolean):
-Controls whether the Home Button extension is enabled
+**\_homeButton** (object): The Home Button object contains the following settings:
 
-#### **\_hideHomeButton** (boolean):
-Controls whether the home button is hidden or not
+>**\_isEnabled** (boolean): Controls whether the Home Button extension is enabled.
 
-#### **\_hideBackButton** (boolean):
-Controls whether the back button is hidden or not. Applies to *contentObjects.json* only.
+>**\_hideHomeButton** (boolean): Controls whether the home button is hidden or not.
 
-#### **\_redirectToId** (string):
-The page ID that the home button should redirect the user to. Use when overriding standard behaviour such as redirecting to an introductory page from the menu.
+>**\_hideBackButton** (boolean): Controls whether the back button is hidden or not. Applies to *contentObjects.json* only.
 
-#### **alt** (string):
-The button's `aria-label` text. Used to override global setting
+>**\_redirectToId** (string): The page ID that the home button should redirect the user to. Use when overriding standard behaviour such as redirecting to an introductory page from the menu.
 
-#### **navLabel** (string):
-The button label text as it appears in the navigation. Used to override global setting
+>**\_iconClasses** (string): CSS class name to override the default home button icon application. Default application for the home button is `icon-home` on all pages with `icon-controls-left` on the menu. If an override is applied to *course.json* the override will apply to the menu and all pages. If an override is applied to *contentObjects.json* the override will only apply specifically to that page.
 
-#### **_navTooltip** (object):
-The Navigation Tooltip object contains the following settings:
+>**alt** (string): The button's `aria-label` text. Used to override global setting.
 
-##### **\_isEnabled** (boolean):
-Controls whether the navigation tooltip is enabled. Used to override global setting
+>**navLabel** (string): The button label text as it appears in the navigation. Used to override global setting.
 
-##### **text** (string):
-The text of the tooltip. Used to override global setting
+>**_navTooltip** (object): The Navigation Tooltip object contains the following settings:
+
+>>**\_isEnabled** (boolean): Controls whether the navigation tooltip is enabled. Used to override global setting.
+
+>>**text** (string): The text of the tooltip. Used to override global setting.
 
 ## Limitations
 
@@ -88,8 +73,8 @@ No known limitations.
 
 ----------------------------
 
-**Framework versions:**  5.30.3+<br>
-**Author / maintainer:**  CGKineo<br>
+**Framework versions:** 5.30.3+<br>
+**Author / maintainer:** CGKineo<br>
 **Accessibility support:** WAI AA<br>
 **RTL support:** Yes<br>
 **Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 12+13 for macOS/iOS/iPadOS, Opera<br>
