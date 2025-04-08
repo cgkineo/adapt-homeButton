@@ -50,7 +50,7 @@ The following attributes are set within *course.json* and / or *contentObjects.j
 
 >**\_isEnabled** (boolean): Controls whether the Home Button extension is enabled.
 
->**\_isInherited** (boolean): Controls whether to use the course defaults defined in *course.json* under `_extensions._homeButton`. If disabled, these settings will override the course defaults. Defaults to `true`.
+>**\_isInherited** (boolean): Controls whether to use the course defaults defined in *course.json* under `_extensions._homeButton`. If disabled, the current model's settings will be used in place of the course defaults. Properties inherited include `alt`, `navLabel`, and `_navTooltip`. Defaults to `true`.
 
 >**\_hideHomeButton** (boolean): Controls whether the home button is hidden or not.
 
