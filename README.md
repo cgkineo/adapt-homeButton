@@ -49,6 +49,8 @@ The following attributes are set within *course.json* and / or *contentObjects.j
 
 >**\_isEnabled** (boolean): Controls whether the Home Button extension is enabled.
 
+>**\_isInherited** (boolean): Controls whether to use the course defaults defined in *course.json* under `_extensions._homeButton`. If disabled, these settings will override the course defaults. Defaults to `true`.
+
 >**\_hideHomeButton** (boolean): Controls whether the home button is hidden or not.
 
 >**\_hideBackButton** (boolean): Controls whether the back button is hidden or not. Applies to *contentObjects.json* only.
@@ -73,8 +75,7 @@ No known limitations.
 
 ----------------------------
 
-**Framework versions:** 5.30.3+<br>
 **Author / maintainer:** CGKineo<br>
 **Accessibility support:** WAI AA<br>
 **RTL support:** Yes<br>
-**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 12+13 for macOS/iOS/iPadOS, Opera<br>
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, Safari for macOS/iOS/iPadOS, Opera<br>

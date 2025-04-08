@@ -18,6 +18,12 @@
               "title": "Enable control of the home button on this page",
               "default": true
             },
+            "_isInherited": {
+              "type": "boolean",
+              "title": "Use course defaults",
+              "default": true,
+              "description": "If disabled, these settings will override the course defaults"
+            },
             "_hideHomeButton": {
               "type": "boolean",
               "title": "Hide the home button",
