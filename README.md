@@ -44,7 +44,7 @@ The following attributes are set within *course.json*. These are used to set som
 
 #### *course.json* and *contentObjects.json*
 
-The following attributes are set within *course.json* and / or *contentObjects.json*. These are used to customize the button for a specific page or menu.
+The following attributes are set within *course.json* and / or *contentObjects.json*. These are used to customize the button for a specific menu or page.
 
 **\_homeButton** (object): The Home Button object contains the following settings:
 
