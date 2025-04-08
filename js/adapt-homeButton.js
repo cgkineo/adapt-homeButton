@@ -72,7 +72,7 @@ class HomeButton extends Backbone.Controller {
 
   renderNavigationView() {
     const currentModelConfig = this.currentModelConfig;
-    const isInherited = currentModelConfig._isInherited && true;
+    const isInherited = currentModelConfig._isInherited ?? true;
     const modelConfig = isInherited ? (HomeButton.globalsConfig ?? {}) : currentModelConfig;
     const {
       _navOrder = -1,
