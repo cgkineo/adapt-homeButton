@@ -14,7 +14,7 @@
 
 All configuration options must be added and amended, where appropriate, for all JSON files.
 
-*config.json*
+#### *config.json*
 
 The following attributes are set within *config.json*.
 
@@ -22,9 +22,9 @@ The following attributes are set within *config.json*.
 
 >**\_isEnabled** (boolean): Controls whether the Home Button extension is enabled.
 
-*course.json*
+#### *course.json*
 
-The following attributes are set within *course.json*. These are used to set some default settings and the navigation order:
+The following attributes are set within *course.json*. These are used to set some default and global settings.
 
 **\_homeButton** (object): The Home Button object contains the following settings:
 
@@ -42,15 +42,13 @@ The following attributes are set within *course.json*. These are used to set som
 
 >>**text** (string): The text of the tooltip. Used to override global setting.
 
-*course.json* and *contentObjects.json*
+#### *course.json* and *contentObjects.json*
 
-The following attributes are set within *course.json* and / or *contentObjects.json*. These are used to *override* global settings and customize the button for a specific page or menu.
+The following attributes are set within *course.json* and / or *contentObjects.json*. These are used to customize the button for a specific page or menu.
 
 **\_homeButton** (object): The Home Button object contains the following settings:
 
 >**\_isEnabled** (boolean): Controls whether the Home Button extension is enabled.
-
->**\_isInherited** (boolean): Controls whether to use the course defaults defined in *course.json* under `_extensions._homeButton`. If disabled, the current model's settings will be used in place of the course defaults. Properties inherited include `alt`, `navLabel`, and `_navTooltip`. Defaults to `true`.
 
 >**\_hideHomeButton** (boolean): Controls whether the home button is hidden or not.
 
@@ -69,6 +67,14 @@ The following attributes are set within *course.json* and / or *contentObjects.j
 >>**\_isEnabled** (boolean): Controls whether the navigation tooltip is enabled. Used to override global setting.
 
 >>**text** (string): The text of the tooltip. Used to override global setting.
+
+#### *contentObjects.json*
+
+The following additional attributes are set within *contentObjects.json*.
+
+**\_homeButton** (object): The Home Button object contains the following additional settings:
+
+>**\_isInherited** (boolean): Controls whether to use the course defaults defined in *course.json* under `_extensions._homeButton`. If disabled, the current content object's settings will be used in place of the course defaults. Properties inherited include `alt`, `navLabel`, and `_navTooltip`. Defaults to `true`.
 
 ## Limitations
 
