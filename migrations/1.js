@@ -95,9 +95,13 @@ describe('Home Button - v1.0.7 to v1.1.0', async () => {
 describe('Home Button - v1.1.2 to v1.2.0', async () => {
   let course, contentObjects, courseHomeButton;
   whereFromPlugin('Home Button - from v1.1.2', { name: 'adapt-homeButton', version: '<1.2.0' });
-  mutateContent('Home Button - add course _iconClasses', async (content) => {
+  mutateContent('Home Button - add course _homeButton if missing', async (content) => {
     course = getCourse();
+    if (!_.has(course, '_homeButton')) _.set(course, '_homeButton', {});
     courseHomeButton = course._homeButton;
+    return true;
+  });
+  mutateContent('Home Button - add course _iconClasses', async (content) => {
     courseHomeButton._iconClasses = '';
     return true;
   });
@@ -106,6 +110,10 @@ describe('Home Button - v1.1.2 to v1.2.0', async () => {
     contentObjects.forEach((contentObject) => {
       _.set(contentObject, '_homeButton._iconClasses', '');
     });
+    return true;
+  });
+  checkContent('Home Button - check course _homeButton', async content => {
+    if (courseHomeButton === undefined) throw new Error('Home Button - course _homeButton invalid');
     return true;
   });
   checkContent('Home Button - check course _iconClasses', async content => {
