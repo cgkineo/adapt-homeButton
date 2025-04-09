@@ -2,7 +2,7 @@ import { describe, whereFromPlugin, mutateContent, checkContent, updatePlugin, g
 import _ from 'lodash';
 
 describe('Home Button - v1.0.7 to v1.1.0', async () => {
-  let course, courseHomeButtonGlobals;
+  let course, courseHomeButtonGlobals, navTooltip;
   whereFromPlugin('Home Button - from v1.0.7', { name: 'adapt-homeButton', version: '<1.1.0' });
   mutateContent('Home Button - add globals if missing', async (content) => {
     course = getCourse();
@@ -10,9 +10,63 @@ describe('Home Button - v1.0.7 to v1.1.0', async () => {
     courseHomeButtonGlobals = course._globals._extensions._homeButton;
     return true;
   });
-
+  mutateContent('Home Button - add globals _homeButton _navOrder', async (content) => {
+    _.set(courseHomeButtonGlobals, '_navOrder', 0);
+    return true;
+  });
+  mutateContent('Home Button - add globals _homeButton _showLabel', async (content) => {
+    _.set(courseHomeButtonGlobals, '_showLabel', true);
+    return true;
+  });
+  mutateContent('Home Button - add globals _homeButton navLabel', async (content) => {
+    _.set(courseHomeButtonGlobals, 'navLabel', 'Home');
+    return true;
+  });
+  mutateContent('Home Button - add globals _homeButton _navTooltip', async (content) => {
+    _.set(courseHomeButtonGlobals, '_navTooltip', {});
+    navTooltip = courseHomeButtonGlobals._navTooltip;
+    return true;
+  });
+  mutateContent('Home Button - add globals _homeButton _navTooltip _isEnabled', async (content) => {
+    _.set(navTooltip, '_isEnabled', true);
+    return true;
+  });
+  mutateContent('Home Button - add globals _homeButton _navTooltip text', async (content) => {
+    _.set(navTooltip, 'text', 'Home');
+    return true;
+  });
   checkContent('Home Button - check globals _homeButton attribute', async content => {
     if (courseHomeButtonGlobals === undefined) throw new Error('Home Button - globals _homeButton invalid');
+    return true;
+  });
+  checkContent('Home Button - check globals _homeButton _navOrder', async content => {
+    const isValid = courseHomeButtonGlobals._navOrder === 0;
+    if (!isValid) throw new Error('Home Button - globals _homeButton _navOrder invalid');
+    return true;
+  });
+  checkContent('Home Button - check globals _homeButton _showLabel', async content => {
+    const isValid = courseHomeButtonGlobals._showLabel === true;
+    if (!isValid) throw new Error('Home Button - globals _homeButton _showLabel invalid');
+    return true;
+  });
+  checkContent('Home Button - check globals _homeButton navLabel', async content => {
+    const isValid = courseHomeButtonGlobals.navLabel === 'Home';
+    if (!isValid) throw new Error('Home Button - globals _homeButton navLabel invalid');
+    return true;
+  });
+  checkContent('Home Button - check globals _homeButton _navTooltip', async content => {
+    const isValid = courseHomeButtonGlobals._navTooltip !== undefined;
+    if (!isValid) throw new Error('Home Button - globals _homeButton _navTooltip invalid');
+    return true;
+  });
+  checkContent('Home Button - check globals _homeButton _navTooltip _isEnabled', async content => {
+    const isValid = navTooltip._isEnabled === true;
+    if (!isValid) throw new Error('Home Button - globals _homeButton _navTooltip _isEnabled invalid');
+    return true;
+  });
+  checkContent('Home Button - check globals _homeButton _navTooltip text', async content => {
+    const isValid = navTooltip.text === 'Home';
+    if (!isValid) throw new Error('Home Button - globals _homeButton _navTooltip text invalid');
     return true;
   });
   updatePlugin('Home Button - update to v1.1.0', { name: 'adapt-homeButton', version: '1.1.0', framework: '>=5.30.3' });
