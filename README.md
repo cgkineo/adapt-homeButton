@@ -24,7 +24,7 @@ The following attributes are set within *config.json*.
 
 #### *course.json*
 
-The following attributes are set within *course.json*. These are used to set some default and global settings.
+The following attributes are set within *course.json* under `_extensions`. These are used to set some default and global settings.
 
 **\_homeButton** (object): The Home Button object contains the following settings:
 
