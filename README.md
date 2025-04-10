@@ -26,7 +26,7 @@ The following attributes are set within *config.json*.
 
 The following attributes are set within *course.json* under `_extensions`. These are used to set some default and global settings.
 
-**\_homeButton** (object): The Home Button object contains the following settings:
+**\_extensions._homeButton** (object): The Home Button object contains the following settings:
 
 >**\_navOrder** (number): The order that the button appears in the navigation.
 
