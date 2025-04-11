@@ -91,6 +91,13 @@
                   "inputType": "Checkbox",
                   "validators": []
                 },
+                "_isInherited": {
+                  "type": "boolean",
+                  "default": true,
+                  "title": "Use course defaults",
+                  "inputType": "Checkbox",
+                  "help": "If disabled, these settings will override the course defaults"
+                },
                 "_hideHomeButton": {
                   "type": "boolean",
                   "required": false,
@@ -165,6 +172,13 @@
                   "title": "Enable control of the home button on this page",
                   "inputType": "Checkbox",
                   "validators": []
+                },
+                "_isInherited": {
+                  "type": "boolean",
+                  "default": true,
+                  "title": "Use course defaults",
+                  "inputType": "Checkbox",
+                  "help": "If disabled, these settings will override the course defaults"
                 },
                 "_hideHomeButton": {
                   "type": "boolean",

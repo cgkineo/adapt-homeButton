@@ -22,6 +22,7 @@
 // course.json - Use to configure at the menu level
 "_homeButton": {
   "_isEnabled": true,
+  "_isInherited": true,
   "_hideHomeButton": false,
   "_comment": "Amend _redirectToId to match the ID of the start / landing page",
   "_redirectToId": "",
@@ -38,6 +39,7 @@
 // contentObjects.json - Use to configure at the content object level
 "_homeButton": {
   "_isEnabled": true,
+  "_isInherited": true,
   "_hideHomeButton": false,
   "_hideBackButton": true,
   "_comment": "Amend _redirectToId to match the ID of the start / landing page",

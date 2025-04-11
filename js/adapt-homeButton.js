@@ -39,6 +39,15 @@ class HomeButton extends Backbone.Controller {
     return Adapt.course?.get('_homeButton');
   }
 
+  get iconClasses() {
+    const currentIconClass = this.currentModelConfig._iconClasses;
+    const courseIconClass = this.courseConfig?._iconClasses;
+    const currentLocation = location._currentLocation;
+    const defaultClass = (currentLocation !== 'course') ? 'icon-home' : 'icon-controls-small-left';
+
+    return (currentIconClass || courseIconClass || defaultClass);
+  }
+
   onRouterEvent() {
     const isEnabled = (this.currentModelConfig?._isEnabled);
     if (!isEnabled) return this.disable();
@@ -63,21 +72,22 @@ class HomeButton extends Backbone.Controller {
 
   renderNavigationView() {
     const currentModelConfig = this.currentModelConfig;
+    const isInherited = currentModelConfig._isInherited ?? true;
+    const modelConfig = isInherited ? (HomeButton.globalsConfig ?? {}) : currentModelConfig;
     const {
       _navOrder = -1,
-      _iconClasses,
       alt,
       _showLabel = true,
       navLabel = '',
       _navTooltip = {}
-    } = Object.assign(HomeButton.globalsConfig ?? {}, currentModelConfig);
+    } = modelConfig;
     const model = new NavigationButtonModel({
       _id: 'homebutton',
       _order: _navOrder,
       _showLabel,
       _classes: 'btn-icon nav__btn nav__homebutton-btn',
       courseConfig: HomeButton.courseConfig,
-      _iconClasses,
+      _iconClasses: this.iconClasses,
       _role: 'link',
       ariaLabel: alt || navLabel,
       text: navLabel,

@@ -5,6 +5,7 @@
 ## Settings Overview
 
 **Home Button** can be configured based on the specific location where it is used (e.g. a menu or a page). Options include:
+
 - Hiding either the home and/or back button. One or both can appear in the navigation at the same time.
 - Changing the text of the buttons
 - Redirecting the button to a specific location (e.g. an introductory page)
@@ -13,7 +14,7 @@
 
 All configuration options must be added and amended, where appropriate, for all JSON files.
 
-*config.json*
+#### *config.json*
 
 The following attributes are set within *config.json*.
 
@@ -21,11 +22,11 @@ The following attributes are set within *config.json*.
 
 >**\_isEnabled** (boolean): Controls whether the Home Button extension is enabled.
 
-*course.json*
+#### *course.json*
 
-The following attributes are set within *course.json*. These are used to set some default settings and the navigation order:
+The following attributes are set within *course.json* under `_extensions`. These are used to set some default and global settings.
 
-**\_homeButton** (object): The Home Button object contains the following settings:
+**\_extensions._homeButton** (object): The Home Button object contains the following settings:
 
 >**\_navOrder** (number): The order that the button appears in the navigation.
 
@@ -41,13 +42,15 @@ The following attributes are set within *course.json*. These are used to set som
 
 >>**text** (string): The text of the tooltip. Used to override global setting.
 
-*course.json* and *contentObjects.json*
+#### *course.json* and *contentObjects.json*
 
-The following attributes are set within *course.json* and / or *contentObjects.json*. These are used to *override* global settings and customize the button for a specific page or menu.
+The following attributes are set within *course.json* and / or *contentObjects.json*. These are used to customize the button for a specific menu or page.
 
 **\_homeButton** (object): The Home Button object contains the following settings:
 
 >**\_isEnabled** (boolean): Controls whether the Home Button extension is enabled.
+
+>**\_isInherited** (boolean): Controls whether to use the course defaults defined in *course.json* under `_extensions._homeButton`. If disabled, the current content object's settings will be used in place of the course defaults. Properties inherited include `alt`, `navLabel`, and `_navTooltip`. Defaults to `true`.
 
 >**\_hideHomeButton** (boolean): Controls whether the home button is hidden or not.
 
@@ -73,8 +76,7 @@ No known limitations.
 
 ----------------------------
 
-**Framework versions:** 5.30.3+<br>
 **Author / maintainer:** CGKineo<br>
 **Accessibility support:** WAI AA<br>
 **RTL support:** Yes<br>
-**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, IE11, Safari 12+13 for macOS/iOS/iPadOS, Opera<br>
+**Cross-platform coverage:** Chrome, Chrome for Android, Firefox (ESR + latest version), Edge, Safari for macOS/iOS/iPadOS, Opera<br>
