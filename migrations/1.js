@@ -105,6 +105,13 @@ describe('Home Button - v1.1.2 to v1.2.0', async () => {
     courseHomeButton._iconClasses = '';
     return true;
   });
+  mutateContent('Home Button - add content objects _homeButton if missing', async (content) => {
+    contentObjects = content.filter(({ _type }) => _type === 'page');
+    contentObjects.forEach((contentObject) => {
+      if (!_.has(contentObject, '_homeButton')) _.set(contentObject, '_homeButton', {});
+    });
+    return true;
+  });
   mutateContent('Home Button - add content objects _iconClasses', async (content) => {
     contentObjects = content.filter(({ _type }) => _type === 'page');
     contentObjects.forEach((contentObject) => {
@@ -118,6 +125,11 @@ describe('Home Button - v1.1.2 to v1.2.0', async () => {
   });
   checkContent('Home Button - check course _iconClasses', async content => {
     if (courseHomeButton._iconClasses === undefined) throw new Error('Home Button - course _homeButton._iconClasses invalid');
+    return true;
+  });
+  checkContent('Home Button - check content objects _homeButton', async content => {
+    const isValid = contentObjects.every((contentObject) => _.has(contentObject, '_homeButton'));
+    if (!isValid) throw new Error('Home Button - content objects _homeButton invalid');
     return true;
   });
   checkContent('Home Button - check content object _iconClasses', async content => {
