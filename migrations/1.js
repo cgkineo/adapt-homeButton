@@ -147,3 +147,51 @@ describe('Home Button - v1.1.2 to v1.2.0', async () => {
     fromPlugins: [{ name: 'adapt-homeButton', version: '1.2.0' }]
   });
 });
+
+describe('Home Button - v1.2.1 to v1.3.0', async () => {
+  let course, contentObjects, courseHomeButton;
+  whereFromPlugin('Home Button - from v1.2.1', { name: 'adapt-homeButton', version: '<1.3.0' });
+  mutateContent('Home Button - add course _isInherited', async (content) => {
+    course = getCourse();
+    courseHomeButton = course._homeButton;
+    courseHomeButton._isInherited = true;
+    return true;
+  });
+  mutateContent('Home Button - add content objects _isInherited', async (content) => {
+    contentObjects = content.filter(({ _type }) => _type === 'page');
+    contentObjects.forEach((contentObject) => {
+      _.set(contentObject, '_homeButton._isInherited', true);
+    });
+    return true;
+  });
+  checkContent('Home Button - check course _isInherited', async content => {
+    if (courseHomeButton._isInherited !== true) throw new Error('Home Button - course _homeButton._isInherited invalid');
+    return true;
+  });
+  checkContent('Home Button - check content object _isInherited', async content => {
+    const isValid = contentObjects.every(({ _isInherited }) => _isInherited === true);
+    if (!isValid) throw new Error('Home Button - content objects _homeButton._isInherited invalid');
+    return true;
+  });
+  updatePlugin('Home Button - update to v1.3.0', { name: 'adapt-homeButton', version: '1.3.0', framework: '>=5.30.3' });
+
+  testSuccessWhere('home button with empty course', {
+    fromPlugins: [{ name: 'adapt-homeButton', version: '1.2.1' }],
+    content: [
+      { _id: 'c-100', _component: 'mcq' },
+      { _type: 'course' }
+    ]
+  });
+
+  testSuccessWhere('home button with empty course config', {
+    fromPlugins: [{ name: 'adapt-homeButton', version: '1.2.1' }],
+    content: [
+      { _id: 'c-100', _component: 'mcq' },
+      { _type: 'course', _homeButton: {} }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-homeButton', version: '1.3.0' }]
+  });
+});
