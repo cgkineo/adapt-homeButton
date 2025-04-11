@@ -181,7 +181,7 @@ describe('Home Button - v1.2.1 to v1.3.0', async () => {
     return true;
   });
   checkContent('Home Button - check content object _isInherited', async content => {
-    const isValid = contentObjects.every(({ _isInherited }) => _isInherited === true);
+    const isValid = contentObjects.every(({ _homeButton }) => _homeButton._isInherited === true);
     if (!isValid) throw new Error('Home Button - content objects _homeButton._isInherited invalid');
     return true;
   });
