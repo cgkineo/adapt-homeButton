@@ -107,14 +107,14 @@ describe('Home Button - v1.1.2 to v1.2.0', async () => {
   });
   mutateContent('Home Button - add content objects _homeButton if missing', async (content) => {
     contentObjects = content.filter(({ _type }) => _type === 'page');
-    contentObjects.forEach((contentObject) => {
+    contentObjects.forEach(contentObject => {
       if (!_.has(contentObject, '_homeButton')) _.set(contentObject, '_homeButton', {});
     });
     return true;
   });
   mutateContent('Home Button - add content objects _iconClasses', async (content) => {
     contentObjects = content.filter(({ _type }) => _type === 'page');
-    contentObjects.forEach((contentObject) => {
+    contentObjects.forEach(contentObject => {
       _.set(contentObject, '_homeButton._iconClasses', '');
     });
     return true;
@@ -171,9 +171,9 @@ describe('Home Button - v1.2.1 to v1.3.0', async () => {
   });
   mutateContent('Home Button - add content objects _isInherited', async (content) => {
     contentObjects = content.filter(({ _type }) => _type === 'page');
-    contentObjects.forEach((contentObject) => {
-      _.set(contentObject, '_homeButton._isInherited', true);
-    });
+    contentObjects.forEach(contentObject =>
+      _.set(contentObject, '_homeButton._isInherited', true)
+    );
     return true;
   });
   checkContent('Home Button - check course _isInherited', async content => {
