@@ -92,6 +92,104 @@ describe('Home Button - v1.0.7 to v1.1.0', async () => {
   });
 });
 
+describe('Home Button - v1.1.0 to v1.1.1', async () => {
+  let course, contentObjects, courseHomeButton;
+  whereFromPlugin('Home Button - from v1.1.0', { name: 'adapt-homeButton', version: '<1.1.1' });
+  mutateContent('Home Button - add course alt', async (content) => {
+    course = getCourse();
+    if (!_.has(course, '_homeButton')) _.set(course, '_homeButton', {});
+    courseHomeButton = course._homeButton;
+    courseHomeButton.alt = 'Home';
+    return true;
+  });
+  mutateContent('Home Button - add course navLabel', async (content) => {
+    courseHomeButton.navLabel = 'Home';
+    return true;
+  });
+  mutateContent('Home Button - add course _navTooltip', async (content) => {
+    courseHomeButton._navTooltip = {
+      _isEnabled: true,
+      text: 'Home'
+    };
+    return true;
+  });
+  mutateContent('Home Button - add content objects alt', async (content) => {
+    contentObjects = content.filter(({ _type }) => _type === 'page');
+    contentObjects.forEach(contentObject => {
+      if (!_.has(contentObject, '_homeButton')) _.set(contentObject, '_homeButton', {});
+      _.set(contentObject, '_homeButton.alt', 'Home');
+    });
+    return true;
+  });
+  mutateContent('Home Button - add content objects navLabel', async (content) => {
+    contentObjects.forEach(contentObject => {
+      _.set(contentObject, '_homeButton.navLabel', 'Home');
+    });
+    return true;
+  });
+  mutateContent('Home Button - add content objects _navTooltip', async (content) => {
+    contentObjects.forEach(contentObject => {
+      _.set(contentObject, '_homeButton._navTooltip', {
+        _isEnabled: true,
+        text: 'Home'
+      });
+    });
+    return true;
+  });
+  checkContent('Home Button - check course alt', async content => {
+    if (courseHomeButton.alt !== 'Home') throw new Error('Home Button - course _homeButton.alt invalid');
+    return true;
+  });
+  checkContent('Home Button - check course navLabel', async content => {
+    if (courseHomeButton.navLabel !== 'Home') throw new Error('Home Button - course _homeButton.navLabel invalid');
+    return true;
+  });
+  checkContent('Home Button - check course _navTooltip', async content => {
+    if (!courseHomeButton._navTooltip || courseHomeButton._navTooltip._isEnabled !== true || courseHomeButton._navTooltip.text !== 'Home') {
+      throw new Error('Home Button - course _homeButton._navTooltip invalid');
+    }
+    return true;
+  });
+  checkContent('Home Button - check content objects alt', async content => {
+    const isValid = contentObjects.every(({ _homeButton }) => _homeButton && _homeButton.alt === 'Home');
+    if (!isValid) throw new Error('Home Button - content objects _homeButton.alt invalid');
+    return true;
+  });
+  checkContent('Home Button - check content objects navLabel', async content => {
+    const isValid = contentObjects.every(({ _homeButton }) => _homeButton && _homeButton.navLabel === 'Home');
+    if (!isValid) throw new Error('Home Button - content objects _homeButton.navLabel invalid');
+    return true;
+  });
+  checkContent('Home Button - check content objects _navTooltip', async content => {
+    const isValid = contentObjects.every(({ _homeButton }) => 
+      _homeButton && _homeButton._navTooltip && _homeButton._navTooltip._isEnabled === true && _homeButton._navTooltip.text === 'Home'
+    );
+    if (!isValid) throw new Error('Home Button - content objects _homeButton._navTooltip invalid');
+    return true;
+  });
+  updatePlugin('Home Button - update to v1.1.1', { name: 'adapt-homeButton', version: '1.1.1', framework: '>=5.30.3' });
+
+  testSuccessWhere('home button with empty course', {
+    fromPlugins: [{ name: 'adapt-homeButton', version: '1.1.0' }],
+    content: [
+      { _id: 'c-100', _component: 'mcq' },
+      { _type: 'course' }
+    ]
+  });
+
+  testSuccessWhere('home button with empty course config', {
+    fromPlugins: [{ name: 'adapt-homeButton', version: '1.1.0' }],
+    content: [
+      { _id: 'c-100', _component: 'mcq' },
+      { _type: 'course', _homeButton: {} }
+    ]
+  });
+
+  testStopWhere('incorrect version', {
+    fromPlugins: [{ name: 'adapt-homeButton', version: '1.1.1' }]
+  });
+});
+
 describe('Home Button - v1.1.2 to v1.2.0', async () => {
   let course, contentObjects, courseHomeButton;
   whereFromPlugin('Home Button - from v1.1.2', { name: 'adapt-homeButton', version: '<1.2.0' });
@@ -165,23 +263,26 @@ describe('Home Button - v1.2.1 to v1.3.0', async () => {
   whereFromPlugin('Home Button - from v1.2.1', { name: 'adapt-homeButton', version: '<1.3.0' });
   mutateContent('Home Button - add course _isInherited', async (content) => {
     course = getCourse();
+    if (!course) return true;
+    if (!_.has(course, '_homeButton')) _.set(course, '_homeButton', {});
     courseHomeButton = course._homeButton;
     courseHomeButton._isInherited = true;
     return true;
   });
   mutateContent('Home Button - add content objects _isInherited', async (content) => {
     contentObjects = content.filter(({ _type }) => _type === 'page');
-    contentObjects.forEach(contentObject =>
-      _.set(contentObject, '_homeButton._isInherited', true)
-    );
+    contentObjects.forEach(contentObject => {
+      if (!_.has(contentObject, '_homeButton')) _.set(contentObject, '_homeButton', {});
+      _.set(contentObject, '_homeButton._isInherited', true);
+    });
     return true;
   });
   checkContent('Home Button - check course _isInherited', async content => {
-    if (courseHomeButton._isInherited !== true) throw new Error('Home Button - course _homeButton._isInherited invalid');
+    if (!courseHomeButton || courseHomeButton._isInherited !== true) throw new Error('Home Button - course _homeButton._isInherited invalid');
     return true;
   });
   checkContent('Home Button - check content object _isInherited', async content => {
-    const isValid = contentObjects.every(({ _homeButton }) => _homeButton._isInherited === true);
+    const isValid = contentObjects.every(({ _homeButton }) => _homeButton && _homeButton._isInherited === true);
     if (!isValid) throw new Error('Home Button - content objects _homeButton._isInherited invalid');
     return true;
   });
